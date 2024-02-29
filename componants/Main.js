@@ -96,6 +96,7 @@ const MainComp = () =>{
         <div className = 'boxmain'>
             <div className = "itemsmain">               
                 <h2>أختار رقم من 0 الى 100</h2>
+                <h5 className="ByE">الأفضل بالأرقام الانجليزية</h5>
                 <input type="number" className="input" placeholder="أدخل الرقم" ref={fName} onChange={TakeInput} onKeyDown={ClickKeyBoard}/>
                 
                 <br/>

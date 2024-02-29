@@ -87,7 +87,7 @@ button{
 /*Title text :*/
 .itemsmain h2 {
     color: rgb(0, 0, 0);
-    margin-bottom: 40px;
+    margin-bottom: 10px;
     font-style: italic;
     text-shadow: 3px 2px 3px white;
     font-weight: 600;
@@ -107,5 +107,11 @@ button{
 }
 .HintText{
     margin-bottom: 10px;
+}
+
+.ByE{
+    color: black;
+    margin-bottom: 15px;
+    text-shadow: 3px 2px 3px white;
 }
 
