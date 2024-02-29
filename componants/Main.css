@@ -1,0 +1,111 @@
+/*Box + Items in box :*/
+.boxmain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.itemsmain{
+    width: 320px;
+    background-color: rgba(255, 255, 255, 0.153);
+    border: 2px solid rgb(245, 245, 245);
+    border-radius: 30px;
+    margin-top: 180px;
+    text-align: center;
+    align-content: center;
+    box-shadow: 15px 5px 45px black;
+}
+
+
+
+
+/*Input :*/
+.input {
+  border: none;
+  outline: none;
+  text-align: center;
+  border-radius: 15px;
+  padding: 1em;
+  background-color: #ccc;
+  box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+  transition: 300ms ease-in-out;
+  margin-top: -4px;
+  color: black;
+
+}
+.input:focus {
+  background-color: white;
+  transform: scale(1.05);
+}
+
+
+
+/*Buttons :*/
+button{
+    margin: 20px;
+}
+.btn {
+    padding: 0.7em 1.2em;
+    background: none;
+    border: 2px solid #fff;
+    font-size: 15px;
+    color: #131313;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    border-radius: 12px;
+    background-color: #b2ec489c;
+    font-weight: bolder;
+    box-shadow: 0 2px 0 2px #000;
+}   
+.btn:before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 120%;
+    background-color: #000000;
+    top: 50%;
+    transform: skewX(30deg) translate(-150%, -50%);
+    transition: all 0.5s;
+}
+.btn:hover {
+    background-color: green;
+    color: #fff;
+    box-shadow: 0 2px 0 2px #0d3b66;
+}
+.btn:hover::before {
+    transform: skewX(30deg) translate(150%, -50%);
+    transition-delay: 0.1s;
+}
+.btn:active {
+    transform: scale(0.9);
+}
+
+
+
+/*Title text :*/
+.itemsmain h2 {
+    color: rgb(0, 0, 0);
+    margin-bottom: 40px;
+    font-style: italic;
+    text-shadow: 3px 2px 3px white;
+    font-weight: 600;
+    font-size: 30px;
+    font-family: Arial;
+}
+
+
+/*Hint text + Atempets text :*/
+.itemsmain h3{
+    color: rgb(0, 0, 0);
+    font-style: italic;
+    text-shadow: 2px 1px 6px white;
+    font-weight: 800;
+    font-size: 23px;
+    margin-top: -6px;
+}
+.HintText{
+    margin-bottom: 10px;
+}
+
