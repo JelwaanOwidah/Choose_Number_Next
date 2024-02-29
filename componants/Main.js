@@ -8,7 +8,6 @@ import useSound from "use-sound";
 //run it once time  : 
 let RandomNum = Math.floor(Math.random(0)*101) ; 
 let HintText = ": 👀 تلمحيات";
-const Test = 'حبينا نتأكد من البوت من الرقم 404'
 
 // my arrows function :
 const MainComp = () =>{
@@ -20,8 +19,6 @@ const MainComp = () =>{
     const WinMoney = {
         Code :  Math.random(100)*1000   ,
         answer : RandomNum , 
-        price_1st : '10$' , 
-        price_2nd  : '5$' ,  
     };
     const fName = useRef("") ; 
     let bot = {
@@ -45,11 +42,15 @@ const MainComp = () =>{
             Lose();
         }else if (RandomNum === MyNum ){
             if (attemptsV === null ){
-                HintText = ` يالعيب يا لعيب يا بطل يابطل فعلا الرقم هو${WinMoney.answer} وربحت ${WinMoney.price_1st}🤯 شاركني بالرمز للربح 🎉👏  : ${WinMoney.Code}`
+                HintText = ` يالعيب يا لعيب يا بطل يابطل فعلا الرقم هو${WinMoney.answer}  🤯 صور الشاشة و شاركني بالرمز للدخول في السحب 🎉👏  : ${WinMoney.Code}`
                 fetch(`https://api.telegram.org/bot${bot.TOKENID}/sendMessage?chat_id=${bot.CHATID}&text=${HintText}` , {mathod : "Get"});
                 Win();
             }else if (attemptsV === 1){
-                HintText = ` يالعيب يا لعيب يا بطل يابطل ${WinMoney.price_2nd}🤯 شاركني بالرمز للربح 🎉👏 : ${WinMoney.Code}`
+                HintText = ` يالعيب يا لعيب يا بطل يابطل فعلا الرقم هو${WinMoney.answer}  🤯 صور الشاشة و شاركني بالرمز للدخول في السحب 🎉👏  : ${WinMoney.Code}`
+                fetch(`https://api.telegram.org/bot${bot.TOKENID}/sendMessage?chat_id=${bot.CHATID}&text=${HintText}` , {mathod : "Get"});
+                Win();
+            }else if (attemptsV === 2) {
+                HintText = ` يالعيب يا لعيب يا بطل يابطل فعلا الرقم هو${WinMoney.answer}  🤯 صور الشاشة و شاركني بالرمز للدخول في السحب 🎉👏  : ${WinMoney.Code}`
                 fetch(`https://api.telegram.org/bot${bot.TOKENID}/sendMessage?chat_id=${bot.CHATID}&text=${HintText}` , {mathod : "Get"});
                 Win();
             }else{
@@ -73,11 +74,9 @@ const MainComp = () =>{
         if (MyNum === null){
             HintText = "🤔 الرقم ؟"
             Lose();
-        }
-        if (MyNum === 404){
-            fetch(`https://api.telegram.org/bot${bot.TOKENID}/sendMessage?chat_id=${bot.CHATID}&text=${Test}` , {mathod : "Get"});
-        }
+        }   
     };
+
     const ReasetAll = () =>{
         setAttempts(null) ; 
         setInput(null) ;  
