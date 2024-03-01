@@ -82,6 +82,20 @@ button{
     transform: scale(0.9);
 }
 
+.btnDisable:disabled{
+    padding: 0.7em 1.2em;
+    background: none;
+    border: 2px solid #fff;
+    font-size: 15px;
+    color: #f2eeee;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    border-radius: 12px;
+    background-color: #0000009c;
+    font-weight: bolder;
+}
 
 
 /*Title text :*/

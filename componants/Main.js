@@ -20,6 +20,8 @@ const MainComp = () =>{
         Code :  Math.random(100)*1000   ,
         answer : RandomNum , 
     };
+    let [disable , setdisable] = useState("") ; 
+    let [ClassNameBtnSend , setClassNameBtnSend] = useState("btn")
     const fName = useRef("") ; 
     let bot = {
         TOKENID : "6761088053:AAHMfOmvI6XjEXL9RIQRhb_sIQ8IiTsVk-g" ,
@@ -28,7 +30,6 @@ const MainComp = () =>{
     const [Win] =  useSound('./sounds/mixkit-winning-notification-2018.wav') ;
     const [Lose] =  useSound('./sounds/wrong-answer-126515.mp3');
 
-    useSound('./sounds/wrong-answer-126515.mp3');
 
     // make an arrow funcation :
     const TakeInput = (e) => {
@@ -45,17 +46,25 @@ const MainComp = () =>{
                 HintText = ` يالعيب يا لعيب يا بطل يابطل فعلا الرقم هو${WinMoney.answer}  🤯 صور الشاشة و شاركني بالرمز للدخول في السحب 🎉👏  : ${WinMoney.Code}`
                 fetch(`https://api.telegram.org/bot${bot.TOKENID}/sendMessage?chat_id=${bot.CHATID}&text=${HintText}` , {mathod : "Get"});
                 Win();
+                setdisable("true");
+                setClassNameBtnSend("btnDisable")
             }else if (attemptsV === 1){
                 HintText = ` يالعيب يا لعيب يا بطل يابطل فعلا الرقم هو${WinMoney.answer}  🤯 صور الشاشة و شاركني بالرمز للدخول في السحب 🎉👏  : ${WinMoney.Code}`
                 fetch(`https://api.telegram.org/bot${bot.TOKENID}/sendMessage?chat_id=${bot.CHATID}&text=${HintText}` , {mathod : "Get"});
                 Win();
+                setdisable("true");
+                setClassNameBtnSend("btnDisable")
             }else if (attemptsV === 2) {
                 HintText = ` يالعيب يا لعيب يا بطل يابطل فعلا الرقم هو${WinMoney.answer}  🤯 صور الشاشة و شاركني بالرمز للدخول في السحب 🎉👏  : ${WinMoney.Code}`
                 fetch(`https://api.telegram.org/bot${bot.TOKENID}/sendMessage?chat_id=${bot.CHATID}&text=${HintText}` , {mathod : "Get"});
                 Win();
+                setdisable("true");
+                setClassNameBtnSend("btnDisable")
             }else{
             HintText = `👏 ${RandomNum} جبتها صح 🎉 والرقم هو ` ; 
             Win();
+            setdisable("true");
+            setClassNameBtnSend("btnDisable")
             }
         }else if(RandomNum > MyNum){
             HintText = '☝️ جرب رقم أعلى' ; 
@@ -78,6 +87,8 @@ const MainComp = () =>{
     };
 
     const ReasetAll = () =>{
+        setClassNameBtnSend("btn")
+        setdisable("");
         setAttempts(null) ; 
         setInput(null) ;  
         fName.current.value = '' ; 
@@ -100,7 +111,7 @@ const MainComp = () =>{
                 <input type="number" className="input" placeholder="أدخل الرقم" ref={fName} onChange={TakeInput} onKeyDown={ClickKeyBoard}/>
                 
                 <br/>
-                <button className = "btn" onClick={ClickButtonSend}>أرسل</button>
+                <button className = {ClassNameBtnSend} onClick={ClickButtonSend} disabled = {disable} >أرسل</button>
                 <button className = "btn" onClick={ReasetAll}>إعادة</button>
 
                 <h3 className="HintText">{HintText}</h3>       
