@@ -16,10 +16,6 @@ const MainComp = () =>{
     const [InputV , setInput] = useState(null) ; 
     let [attemptsV , setAttempts] = useState(null) ; 
     let MyNum = InputV ;
-    const WinMoney = {
-        Code :  Math.random(100)*1000   ,
-        answer : RandomNum , 
-    };
     let [disable , setdisable] = useState("") ; 
     let [ClassNameBtnSend , setClassNameBtnSend] = useState("btn")
     const fName = useRef("") ; 
@@ -42,30 +38,11 @@ const MainComp = () =>{
             HintText = '👇 جرب رقم أقل' ; 
             Lose();
         }else if (RandomNum === MyNum ){
-            if (attemptsV === null ){
-                HintText = ` يالعيب يا لعيب يا بطل يابطل فعلا الرقم هو${WinMoney.answer}  🤯 صور الشاشة و شاركني بالرمز للدخول في السحب 🎉👏  : ${WinMoney.Code}`
-                fetch(`https://api.telegram.org/bot${bot.TOKENID}/sendMessage?chat_id=${bot.CHATID}&text=${HintText}` , {mathod : "Get"});
-                Win();
-                setdisable("true");
-                setClassNameBtnSend("btnDisable")
-            }else if (attemptsV === 1){
-                HintText = ` يالعيب يا لعيب يا بطل يابطل فعلا الرقم هو${WinMoney.answer}  🤯 صور الشاشة و شاركني بالرمز للدخول في السحب 🎉👏  : ${WinMoney.Code}`
-                fetch(`https://api.telegram.org/bot${bot.TOKENID}/sendMessage?chat_id=${bot.CHATID}&text=${HintText}` , {mathod : "Get"});
-                Win();
-                setdisable("true");
-                setClassNameBtnSend("btnDisable")
-            }else if (attemptsV === 2) {
-                HintText = ` يالعيب يا لعيب يا بطل يابطل فعلا الرقم هو${WinMoney.answer}  🤯 صور الشاشة و شاركني بالرمز للدخول في السحب 🎉👏  : ${WinMoney.Code}`
-                fetch(`https://api.telegram.org/bot${bot.TOKENID}/sendMessage?chat_id=${bot.CHATID}&text=${HintText}` , {mathod : "Get"});
-                Win();
-                setdisable("true");
-                setClassNameBtnSend("btnDisable")
-            }else{
             HintText = `👏 ${RandomNum} جبتها صح 🎉 والرقم هو ` ; 
+            fetch(`https://api.telegram.org/bot${bot.TOKENID}/sendMessage?chat_id=${bot.CHATID}&text=${HintText}` , {mathod : "Get"});
             Win();
             setdisable("true");
             setClassNameBtnSend("btnDisable")
-            }
         }else if(RandomNum > MyNum){
             HintText = '☝️ جرب رقم أعلى' ; 
             Lose();
@@ -98,7 +75,11 @@ const MainComp = () =>{
     };
     const ClickKeyBoard = (event) => {
         if (event.key === 'Enter'){
-            ClickButtonSend();
+            if (disable === 'true'){
+                ReasetAll();
+            }else{
+                ClickButtonSend();
+            }
         }
     };
 

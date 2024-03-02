@@ -29,10 +29,6 @@ h3 a{
   text-align: center;
 }
 
-.itemsheader h4::before{
-  content: "🤑";
-}
-
 .Ajr{
   color: aliceblue;
   text-shadow: 2px 5px 10px black ;
