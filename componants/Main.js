@@ -8,6 +8,7 @@ import useSound from "use-sound";
 //run it once time  : 
 let RandomNum = Math.floor(Math.random(0)*101) ; 
 let HintText = ": 👀 تلمحيات";
+let BotMassegeWhenWin = `` ; 
 
 // my arrows function :
 const MainComp = () =>{
@@ -39,7 +40,8 @@ const MainComp = () =>{
             Lose();
         }else if (RandomNum === MyNum ){
             HintText = `👏 ${RandomNum} جبتها صح 🎉 والرقم هو ` ; 
-            fetch(`https://api.telegram.org/bot${bot.TOKENID}/sendMessage?chat_id=${bot.CHATID}&text=${HintText}` , {mathod : "Get"});
+            BotMassegeWhenWin = `في المحاولة رقم ${attemptsV + 1}  و جوابك ${RandomNum} جبتها صح 🎉   `
+            fetch(`https://api.telegram.org/bot${bot.TOKENID}/sendMessage?chat_id=${bot.CHATID}&text=${BotMassegeWhenWin}` , {mathod : "Get"});
             Win();
             setdisable("true");
             setClassNameBtnSend("btnDisable")
